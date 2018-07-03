@@ -28,7 +28,7 @@ function kickUser($clientInfo, $host){
 
     $strOnKickToConsole = str_replace("%nickname%", $clientInfo['client_nickname'], $personaldmsg['kickConsole']);
 
-    echo (isset($strOnKickToConsole) && !empty($strOnKickToConsole) ? $strOnKickToConsole . "\n" : 'User ' . $clientInfo['client_nickname'] . ' kicked!');
+    echo (isset($strOnKickToConsole) && !empty($strOnKickToConsole) ? $strOnKickToConsole . "\n" : 'User ' . $clientInfo['client_nickname'] . ' kicked from Server!');
 }
 // This function is the heart of this script :D
 function runChecker($clientInfo, $host) {
