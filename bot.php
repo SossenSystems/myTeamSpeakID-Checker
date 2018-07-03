@@ -15,6 +15,7 @@ try {
     TeamSpeak3_Helper_Signal::getInstance()->subscribe("serverqueryWaitTimeout", "onTimeout");
     TeamSpeak3_Helper_Signal::getInstance()->subscribe("notifyCliententerview", "onJoin");
     $ts3_VirtualServer->serverGetSelected()->notifyRegister("server");
+    ($ts3_VirtualServer->virtualserver_version != "3.3.0 [Build: 1530178919]" ? stopBot() : '');
     while (1) $ts3_VirtualServer->getAdapter()->wait();
 }
 catch(TeamSpeak3_Transport_Exception $e){
@@ -27,7 +28,13 @@ catch(TeamSpeak3_Transport_Exception $e){
 }
 catch(Exception $e)
 {
-    print_r("[ERROR]  " . $e->getMessage() . "\n");
+    print_r("[ERROR2]  " . $e->getMessage() . "\n");
+}
+
+function stopBot(){
+    echo "Stopping Bot... Reason you need minimum the Server-Version 3.3.0\nYou can download the latest beta here: http://dl.4players.de/ts/releases/pre_releases/server/?C=M;O=D\n";
+    sleep(1);
+    exit();
 }
 
 function onTimeout($seconds, TeamSpeak3_Adapter_ServerQuery $adapter) {

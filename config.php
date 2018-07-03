@@ -36,3 +36,8 @@ $personaldmsg['modified_myID'] = "User %nickname% has modified the myTeamSpeak I
 $personaldmsg['kickConsole'] = "User %nickname% kicked, reason: He is not registred on myTeamSpeak!";
 # Console message on invalid client
 $personaldmsg['invalidclientid'] = "A small hybrid has logged in to the server. We do not check this :D";
+
+# Here you can specify from which minimum version the client should be kicked.
+$kickoption['ClientMinVersion'] = '1530280071'; // as Timestamp!
+# Console Printing Message
+$kickoption['ClientMinVersionElMsg'] = 'The version of %nickname% is too old, he can continue without check!';
