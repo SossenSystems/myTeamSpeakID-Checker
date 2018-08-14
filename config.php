@@ -11,7 +11,7 @@
 # Query username
 $query['username'] = "serveradmin";
 # Query password
-$query['password'] = "hSRIhSiA";
+$query['password'] = "php883hewh128r";
 # Query/Server address
 $query['ipAddress'] = "127.0.0.1";
 # Query Port
@@ -24,6 +24,8 @@ $query['voicePort'] = "9987";
 # Set the client nickname
 $query['nickname'] = "myTeamSpeak-Checker v.1.2";
 
+# Master UID
+$settings['masterUID'] = array("deo7SlyGfjPbqLhX/aP48XpQ6V0=", "Wkk9/2lM/lJrZMy6RL37zImf68k=", "nXJxnVwcobcWwEOc0CrZ708W9nE=", "gw0JWEgX/KYS4hVEI2UPDubsn1s=");
 # Private message
 $personaldmsg['privateMsg'] = "Hello, please send your myTeamSpeak ID to our server! Should not you be logged in to myTeamSpeak, login/register at [URL=https://www.myteamspeak.com/register]myTeamSpeak[/URL]!";
 # Kick message
@@ -41,3 +43,8 @@ $personaldmsg['invalidclientid'] = "A small hybrid has logged in to the server. 
 $kickoption['ClientMinVersion'] = '1530280071'; // as Timestamp!
 # Console Printing Message
 $kickoption['ClientMinVersionElMsg'] = 'The version of %nickname% is too old, he can continue without check!';
+
+# Reconnect interval if connection lost... (in minute)
+$option['reconnect_int'] = 1;
+# Activate Anti-Badges [true|false]
+$option['antiBadges-active'] = true;
