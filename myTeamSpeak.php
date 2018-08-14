@@ -17,15 +17,21 @@ function getEvent($event, $host){
     return $clientInfo;
 }
 // This function kicks user from the Server and write them a private message
-function kickUser($clientInfo, $host){
+function kickUser($clientInfo, $host, $antiBadgeKick = true){
     global $colors, $personaldmsg;
     // Selects client from Client ID
     $client = $host->serverGetSelected()->clientGetById($clientInfo["clid"]);
-    // Send a private message on kick
-    $client->message($personaldmsg['privateMsg']);
-    // Kicks the user from server
-    $client->kick('5', $personaldmsg['kickMsg']);
-
+    if(!$antiBadgeKick == true) {
+        // Send a private message on kick
+        $client->message($personaldmsg['privateMsg']);
+        // Kicks the user from server
+        $client->kick('5', $personaldmsg['kickMsg']);
+        echo "falsch", PHP_EOL;
+    }else{
+        echo "ok", PHP_EOL;
+        $client->message("Badges are forbidden here!\nPlease remove you're badge(s)");
+        $client->kick('5', "Badges are forbidden here");
+    }
     $strOnKickToConsole = str_replace("%nickname%", $clientInfo['client_nickname'], $personaldmsg['kickConsole']);
     echo $colors->getColoredString( "[INFO] ". (isset($strOnKickToConsole) && !empty($strOnKickToConsole) ? $strOnKickToConsole . "\n" : 'User ' . $clientInfo['client_nickname'] . ' kicked!' . "\n"), "white");
 }
@@ -46,7 +52,7 @@ function runChecker($clientInfo, $host) {
                         $strNicknameOnSuc = str_replace("%nickname%", $clientInfo['client_nickname'], $personaldmsg['successfulyJoinC']);
                         echo $colors->getColoredString("[INFO] " . $strNicknameOnSuc, "green"), PHP_EOL;
                     } else {
-                        kickUser($clientInfo, $host);
+                        kickUser($clientInfo, $host, true);
                     }
                 } else {
                     $strNicknameOnMod = str_replace("%nickname%", $clientInfo['client_nickname'], $personaldmsg['modified_myID']);
@@ -60,6 +66,7 @@ function runChecker($clientInfo, $host) {
                 if (isset($clientInfo['client_badges'])) {
                     if (preg_match("(([a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}))", $clientInfo['client_badges'])) {
                         echo $colors->getColoredString("[INFO] User \"" . $clientInfo["client_nickname"] . "\" has set badges..."), PHP_EOL;
+                        kickUser($clientInfo, $host);
                         echo $colors->getColoredString("[INFO] User \"" . $clientInfo["client_nickname"] . "\" kicked from the server, Reason: Valid badges..."), PHP_EOL;
                         if (!isset($_SESSION['countOfKickedBadgesUser'])) {
                             $_SESSION['countOfKickedBadgesUser'] = 1;
