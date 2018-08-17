@@ -3,7 +3,7 @@
  * Author: Michael aka SossenSystems
  * Credits: Alex aka xLikeAlex and Bluscream
  * Version: myTeamSpeakID-Checker v.1.2
- * Info: for questens, issues and pull requests visit https://github.com/SossenSystems/myTeamSpeakID-Checker
+ * Info: for questions, issues and pull requests visit https://github.com/SossenSystems/myTeamSpeakID-Checker
  */
 
 // This function get the event from the bot.php
